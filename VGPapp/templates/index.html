@@ -1,0 +1,56 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+
+    <div class="container" style="margin-top: 30px">
+        <div class="row">
+            {% for game in page_obj %}
+                <div class="col-md-4 mb-3">
+                    <div class="card"
+                         style="width: 18rem; margin: auto; background-color: darkgray; border: 7px solid whitesmoke">
+                        <img src="{{ MEDIA_URL }}{{ game.image.url }}" class="card-img-top" alt="..."
+                             style="width: 250px; height: 200px; margin: 10px auto auto;">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{ game.name }}</b></h5>
+                            <p class="card-text">{{ game.game_category }}</p>
+                            <a href="{% url 'details' name=game.name %}" class="btn btn-primary">View game</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="pagination" style="color:whitesmoke">
+        <div class="container" style="text-align: center;">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-dark">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-dark">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-dark">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-dark">last &raquo;</a>
+        {% endif %}
+    </span>
+        </div>
+    </div>
+
+    <footer class="bg-dark .footer_area"
+            style="color: whitesmoke;margin-top: 100px; width: 1200px;margin-bottom: 0px;padding-bottom: 0px">
+        <div class="container" style="padding-top:25px;padding-left: 80px; padding-bottom: 25px">
+            <p>Created by: Hristijan Mitic</p>
+            <p>If you have any questions feel free to send me a <a href="mailto:hristijan.mitic.01@gmail.com"
+                                                                   class="btn btn-primary" style="padding: 0px 10px">mail</a>
+            </p>
+            <p>2023</p>
+        </div>
+    </footer>
+
+{% endblock %}
+

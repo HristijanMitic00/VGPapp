@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+    <div class="container" style="margin-top: 70px">
+    <h3 style="color: whitesmoke"><span style="margin-right: 10px">Username:</span>{{ user.username }}</h3>
+    <h3 style="color: whitesmoke"><span style="margin-right: 10px">Date joined:</span>{{ user.date_joined }}</h3>
+    {% if user.is_superuser %}
+        <a href="{% url 'add' %}" class="badge badge-info" style="background-color: dodgerblue; padding: 10px;text-decoration: none;margin: 10px">Add new game</a>
+        {% else %}
+        <p style="color: whitesmoke">You can't add a game because you are not a superuser.</p>
+    {% endif %}
+
+
+
+    </div>
+
+{% endblock %}

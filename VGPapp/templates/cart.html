@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+    <div class="container" style="text-align: right; margin-top: 40px">
+    {% if games.count != 0 %}
+    <a href="{% url 'remove_cart' %}" class="btn btn-danger">Delete cart</a>
+    {% endif %}
+    </div>
+    <div class="container" style="margin-top: 40px">
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for game in games %}
+                <tr>
+                    <td scope="row" style="padding-top: 14px">{{ game.game.name }}</td>
+                    <td style="padding-top: 14px">{{ game.game.price }}</td>
+                    <td style="padding-top: 14px">{{ game.quantity }}</td>
+                    <td><a href="{% url 'remove_from_cart' name=game.game.name %}" class="btn btn-danger">Remove from cart</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+    <div class="container" style="text-align: right; margin-top: 40px">
+        <h2 style="color: whitesmoke; padding-bottom: 15px"><b>Total price: {{ cart.totalPrice }}</b><span>$</span></h2>
+        {% if games.count != 0 %}
+    <a href="{% url "checkout" %}" class="btn btn-primary">Order</a>
+    {% endif %}
+    </div>
+{% endblock %}
+

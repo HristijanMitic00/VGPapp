@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <div class="container" style="margin-top: 40px; margin-left: 100px; text-align: center">
+        <img src="{{ MEDIA_URL }}{{ game.image.url }}" alt="No image!" style="width: 430px;height: 480px;float: left">
+        <div class="container" style="padding-top: 120px; color: whitesmoke">
+            <h2>Game name: <b>{{ game.name }}</b></h2>
+            <h5>Category: {{ game.game_category }}</h5>
+            <h5>Description: {{ game.description }}</h5>
+            <h4>Price: <b>{{ game.price }}<span>$</span></b></h4>
+
+        </div>
+    </div>
+    <div class="container" style="margin-left: 800px; padding-top: 15px">
+        <a href="{% url 'index' %}" class="btn btn-dark">Go back</a>
+
+        <a href="{% url 'add_to_cart' name=game.name %}" class="btn btn-primary" style="margin-left: 20px">Add to
+            cart</a>
+
+    </div>
+    </form>
+{% endblock %}

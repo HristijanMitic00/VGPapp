@@ -1,0 +1,6 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <p style="color: whitesmoke">Logged out!</p>
+    <a href="{% url 'login' %}" class="btn btn-primary">Click here to login again.</a>
+{% endblock %}
